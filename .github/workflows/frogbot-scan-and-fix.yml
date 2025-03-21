@@ -31,7 +31,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          
       - run: pip install pipenv
+
+      - name: Debug OIDC Claims
+        uses: ./.github/actions/actions-oidc-debugger
+        with:
+          oidc-provider-name: ps-jfrog-labs
+          audience: ps-jfrog-oidc
+
       - uses: jfrog/frogbot@v2
         with:
           oidc-provider-name: ps-jfrog-labs
