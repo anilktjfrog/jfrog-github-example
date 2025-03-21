@@ -35,10 +35,9 @@ jobs:
       - run: pip install pipenv
 
       - name: Debug OIDC Claims
-        uses: ./.github/actions/actions-oidc-debugger
+        uses: github/actions-oidc-debugger@main
         with:
-          oidc-provider-name: ps-jfrog-labs
-          audience: ps-jfrog-oidc
+          audience: '${{ github.server_url }}/${{ github.repository_owner }}'
 
       - uses: jfrog/frogbot@v2
         with:
